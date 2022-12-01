@@ -6,5 +6,5 @@ export const HeaderWrapper = styled.div`
   height: 80px;
   padding: 0 24px;
   border-bottom: 1px solid #eee;
-  grid-template-columns: 1fr min-content 1fr;
+  grid-template-columns: 1fr auto 1fr;
 `;
