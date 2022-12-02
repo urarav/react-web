@@ -24,12 +24,12 @@ const Home = memo(() => {
       <div className="content">
         <section className="content-header">
           <SectionHeader title={goodPriceInfo.title} />
-          <ul className="content-list">
-            {goodPriceInfo.list?.slice(0, 8).map((li) => (
-              <RoomItem key={li.id} roomInfo={li} />
-            ))}
-          </ul>
         </section>
+        <ul className="content-list">
+          {goodPriceInfo.list?.slice(0, 8).map((li) => (
+            <RoomItem key={li.id} roomInfo={li} />
+          ))}
+        </ul>
       </div>
     </HomeWrapper>
   );

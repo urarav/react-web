@@ -7,7 +7,6 @@ export const SectionHeaderWrapper = styled.div`
     font-weight: 600px;
     font-size: 22px;
     line-height: 26px;
-    margin-bottom: 0;
   }
   p {
     margin-top: 12px;
