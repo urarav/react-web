@@ -12,6 +12,7 @@ module.exports = {
   webpack: {
     alias: {
       "@": resolve("src"),
+      // "@mui/styled-engine": "@mui/styled-engine-sc",
       components: resolve("src/components"),
     },
   },
