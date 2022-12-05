@@ -1,20 +1,25 @@
-import { getGoodPriceInfo } from "@/services/modules/home";
+import { getGoodPriceInfo, getHighScoreInfo } from "@/services/modules/home";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchHomeDataAction = createAsyncThunk(
   "fetchHomeData",
-  async () => await getGoodPriceInfo()
+  async () => await Promise.all([getGoodPriceInfo(), getHighScoreInfo()])
 );
 
 const homeSlice = createSlice({
   name: "home",
   initialState: {
     goodPriceInfo: {},
+    highScoreInfo: {},
   },
   reducers: {},
   extraReducers: {
-    [fetchHomeDataAction.fulfilled](state, { payload }) {
-      state.goodPriceInfo = payload;
+    [fetchHomeDataAction.fulfilled](
+      state,
+      { payload: [goodPriceInfo, highScoreInfo] }
+    ) {
+      state.goodPriceInfo = goodPriceInfo;
+      state.highScoreInfo = highScoreInfo;
     },
   },
 });

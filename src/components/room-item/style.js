@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RoomItemWrapper = styled.div`
+export const RoomItemWrapper = styled.li`
   width: 25%;
   padding: 8px;
 
@@ -46,6 +46,22 @@ export const RoomItemWrapper = styled.div`
 
     &-price {
       margin: 8px 0 0;
+    }
+
+    &-rate {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      margin: 8px 0 0;
+
+      &__count {
+        margin: 0 2px 0 4px;
+      }
+
+      .MuiRating-icon {
+        margin-right: -2px;
+      }
     }
   }
 `;

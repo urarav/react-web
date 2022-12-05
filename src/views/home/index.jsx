@@ -1,9 +1,8 @@
-import RoomItem from "@/components/room-item";
-import SectionHeader from "@/components/section-header";
-import { fetchHomeDataAction } from "@/store/modules/home";
+import HomeBanner from "./c-cpns/home-banner";
+import HomeSection from "./c-cpns/home-section";
 import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import HomeBanner from "./c-cpns/home-banner";
+import { fetchHomeDataAction } from "@/store/modules/home";
 import { HomeWrapper } from "./style";
 
 const Home = memo(() => {
@@ -12,9 +11,10 @@ const Home = memo(() => {
     dispatch(fetchHomeDataAction());
   }, [dispatch]);
 
-  const { goodPriceInfo } = useSelector(
+  const { goodPriceInfo, highScoreInfo } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
     }),
     shallowEqual
   );
@@ -22,14 +22,8 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <section className="content-header">
-          <SectionHeader title={goodPriceInfo.title} />
-        </section>
-        <ul className="content-list">
-          {goodPriceInfo.list?.slice(0, 8).map((li) => (
-            <RoomItem key={li.id} roomInfo={li} />
-          ))}
-        </ul>
+        <HomeSection sectionInfo={goodPriceInfo} />
+        <HomeSection sectionInfo={highScoreInfo} />
       </div>
     </HomeWrapper>
   );
