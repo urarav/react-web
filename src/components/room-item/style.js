@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RoomItemWrapper = styled.li`
-  width: 25%;
+  width: ${(props) => 100 / props.col}%;
   padding: 8px;
 
   .item {

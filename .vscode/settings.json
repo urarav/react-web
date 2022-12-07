@@ -1,0 +1,6 @@
+{
+    "workbench.view.alwaysShowHeaderActions": false,
+    "debug.showInStatusBar": "onFirstSessionStart",
+    "debug.showSubSessionsInToolBar": true,
+    "testing.automaticallyOpenPeekViewDuringAutoRun": false
+}

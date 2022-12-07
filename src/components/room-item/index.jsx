@@ -15,9 +15,13 @@ const RoomItem = memo((props) => {
       reviews_count,
       bottom_info,
     },
+    col = 4,
   } = props;
   return (
-    <RoomItemWrapper verifyColor={verify_info?.text_color ?? "#4e4e4e"}>
+    <RoomItemWrapper
+      verifyColor={verify_info?.text_color ?? "#4e4e4e"}
+      col={col}
+    >
       <ul className="item">
         <li className="item-img">
           <img src={picture_url} alt=""></img>
