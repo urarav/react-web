@@ -1,13 +1,10 @@
 import HomeBanner from "./c-cpns/home-banner";
 import HomeSection from "./c-cpns/home-section";
-import React, { memo, useCallback, useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import { HomeWrapper } from "./style";
-import SectionHeader from "@/components/section-header";
-import SectionRoom from "@/components/section-room";
-import SectionTabs from "@/components/section-tabs";
-import { useState } from "react";
+import { isEmpty } from "@/utils";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
@@ -15,30 +12,29 @@ const Home = memo(() => {
     dispatch(fetchHomeDataAction());
   }, [dispatch]);
 
-  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
-    (state) => ({
-      goodPriceInfo: state.home.goodPriceInfo,
-      highScoreInfo: state.home.highScoreInfo,
-      discountInfo: state.home.discountInfo,
-    }),
-    shallowEqual
-  );
-
-  const { title, subtitle, dest_list, dest_address = [] } = discountInfo;
-  const [name, setName] = useState("佛山");
-  const tabsInfo = dest_address.map((item) => item.name);
-  const handleTabClick = useCallback((name) => setName(name), []);
+  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo } =
+    useSelector(
+      (state) => ({
+        goodPriceInfo: state.home.goodPriceInfo,
+        highScoreInfo: state.home.highScoreInfo,
+        discountInfo: state.home.discountInfo,
+        recommendInfo: state.home.recommendInfo,
+      }),
+      shallowEqual
+    );
 
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <SectionHeader title={title} subtitle={subtitle} />
-        <SectionTabs tabsInfo={tabsInfo} handleTabClick={handleTabClick} />
-        <SectionRoom listInfo={dest_list?.[name]} col="3" />
-
-        <HomeSection sectionInfo={goodPriceInfo} />
-        <HomeSection sectionInfo={highScoreInfo} />
+        {!isEmpty(recommendInfo) && (
+          <HomeSection sectionInfo={recommendInfo} layout_flag={true} />
+        )}
+        {!isEmpty(discountInfo) && (
+          <HomeSection sectionInfo={discountInfo} layout_flag={true} />
+        )}
+        {!isEmpty(goodPriceInfo) && <HomeSection sectionInfo={goodPriceInfo} />}
+        {!isEmpty(highScoreInfo) && <HomeSection sectionInfo={highScoreInfo} />}
       </div>
     </HomeWrapper>
   );

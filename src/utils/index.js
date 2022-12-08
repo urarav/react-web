@@ -11,3 +11,7 @@ export function styleStrToObject(styleStr) {
   });
   return obj;
 }
+
+export function isEmpty(source = {}) {
+  return Object.keys(source).length === 0;
+}

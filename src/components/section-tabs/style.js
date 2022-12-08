@@ -12,6 +12,7 @@ export const SectionTabsWrapper = styled.ul`
     text-align: center;
     border-radius: 3px;
     padding: 14px 16px;
+    white-space: nowrap;
     border: 0.5px solid #d8d8d8;
     ${(props) => props.theme.mixins.boxShadow}
 

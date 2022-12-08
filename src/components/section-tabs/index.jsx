@@ -3,6 +3,7 @@ import React, { memo } from "react";
 import classNames from "classnames";
 import { useState } from "react";
 import { SectionTabsWrapper } from "./style";
+import ScrollView from "@/base-ui/scroll-view";
 
 const SectionTabs = memo((props) => {
   const { tabsInfo, handleTabClick } = props;
@@ -12,17 +13,19 @@ const SectionTabs = memo((props) => {
     handleTabClick(name);
   };
   return (
-    <SectionTabsWrapper>
-      {tabsInfo.map((li, idx) => (
-        <li
-          onClick={handleClickItem(idx, li)}
-          className={classNames("item", { "is-active": idx === activeIdx })}
-          key={idx}
-        >
-          {li}
-        </li>
-      ))}
-    </SectionTabsWrapper>
+    <ScrollView>
+      <SectionTabsWrapper>
+        {tabsInfo.map((li, idx) => (
+          <li
+            onClick={handleClickItem(idx, li)}
+            className={classNames("item", { "is-active": idx === activeIdx })}
+            key={idx}
+          >
+            {li}
+          </li>
+        ))}
+      </SectionTabsWrapper>
+    </ScrollView>
   );
 });
 
