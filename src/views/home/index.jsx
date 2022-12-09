@@ -27,11 +27,11 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        {!isEmpty(recommendInfo) && (
-          <HomeSection sectionInfo={recommendInfo} layout_flag={true} />
-        )}
         {!isEmpty(discountInfo) && (
           <HomeSection sectionInfo={discountInfo} layout_flag={true} />
+        )}
+        {!isEmpty(recommendInfo) && (
+          <HomeSection sectionInfo={recommendInfo} layout_flag={true} />
         )}
         {!isEmpty(goodPriceInfo) && <HomeSection sectionInfo={goodPriceInfo} />}
         {!isEmpty(highScoreInfo) && <HomeSection sectionInfo={highScoreInfo} />}

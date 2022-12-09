@@ -13,8 +13,8 @@ const SectionTabs = memo((props) => {
     handleTabClick(name);
   };
   return (
-    <ScrollView>
-      <SectionTabsWrapper>
+    <SectionTabsWrapper>
+      <ScrollView>
         {tabsInfo.map((li, idx) => (
           <li
             onClick={handleClickItem(idx, li)}
@@ -24,8 +24,8 @@ const SectionTabs = memo((props) => {
             {li}
           </li>
         ))}
-      </SectionTabsWrapper>
-    </ScrollView>
+      </ScrollView>
+    </SectionTabsWrapper>
   );
 });
 

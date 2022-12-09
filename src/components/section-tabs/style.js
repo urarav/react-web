@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
-export const SectionTabsWrapper = styled.ul`
-  display: flex;
-  gap: 16px;
-
+export const SectionTabsWrapper = styled.div`
   .item {
     flex-shrink: 0;
     font-size: 17px;
