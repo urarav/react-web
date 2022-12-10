@@ -15,12 +15,14 @@ const RoomItem = memo((props) => {
       reviews_count,
       bottom_info,
     },
-    col = 4,
+    col,
+    isGallery,
   } = props;
   return (
     <RoomItemWrapper
       verifyColor={verify_info?.text_color ?? "#4e4e4e"}
       col={col}
+      isGallery={isGallery}
     >
       <ul className="item">
         <li className="item-img">
@@ -48,6 +50,11 @@ const RoomItem = memo((props) => {
 
 RoomItem.propTypes = {
   roomInfo: PropTypes.object.isRequired,
+};
+
+RoomItem.defaultProps = {
+  col: 4,
+  isGallery: false,
 };
 
 export default RoomItem;

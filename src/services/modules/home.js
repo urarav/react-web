@@ -23,3 +23,15 @@ export function getHotRecommendInfo() {
     url: "/home/hotrecommenddest",
   });
 }
+
+export function getLongForInfo() {
+  return request.get({
+    url: "/home/longfor",
+  });
+}
+
+export function getPlusInfo() {
+  return request.get({
+    url: "/home/plus",
+  });
+}

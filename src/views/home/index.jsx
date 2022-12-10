@@ -5,6 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import { HomeWrapper } from "./style";
 import { isEmpty } from "@/utils";
+import HomeGallery from "./c-cpns/home-gallery";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
@@ -12,16 +13,24 @@ const Home = memo(() => {
     dispatch(fetchHomeDataAction());
   }, [dispatch]);
 
-  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo } =
-    useSelector(
-      (state) => ({
-        goodPriceInfo: state.home.goodPriceInfo,
-        highScoreInfo: state.home.highScoreInfo,
-        discountInfo: state.home.discountInfo,
-        recommendInfo: state.home.recommendInfo,
-      }),
-      shallowEqual
-    );
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    recommendInfo,
+    longForInfo,
+    plusInfo,
+  } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+      recommendInfo: state.home.recommendInfo,
+      longForInfo: state.home.longForInfo,
+      plusInfo: state.home.plusInfo,
+    }),
+    shallowEqual
+  );
 
   return (
     <HomeWrapper>
@@ -33,8 +42,12 @@ const Home = memo(() => {
         {!isEmpty(recommendInfo) && (
           <HomeSection sectionInfo={recommendInfo} layout_flag={true} />
         )}
+        {!isEmpty(longForInfo) && (
+          <HomeGallery layout_flag={true} sectionInfo={longForInfo} />
+        )}
         {!isEmpty(goodPriceInfo) && <HomeSection sectionInfo={goodPriceInfo} />}
         {!isEmpty(highScoreInfo) && <HomeSection sectionInfo={highScoreInfo} />}
+        {!isEmpty(plusInfo) && <HomeGallery sectionInfo={plusInfo} />}
       </div>
     </HomeWrapper>
   );

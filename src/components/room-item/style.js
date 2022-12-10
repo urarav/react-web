@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
 export const RoomItemWrapper = styled.li`
-  width: ${(props) => 100 / props.col}%;
-  padding: 8px;
+  width: ${(props) =>
+    props.isGallery
+      ? `calc((100% - ${props.col - 1} * 16px) / ${props.col})`
+      : `${100 / props.col}%`};
+  padding: ${(props) => (props.isGallery ? 0 : 8)}px;
+  flex-shrink: 0;
 
   .item {
     height: 100%;
