@@ -2,12 +2,14 @@ import PropTypes from "prop-types";
 import React, { memo } from "react";
 import { Rating } from "@mui/material";
 import { RoomItemWrapper } from "./style";
+import { Carousel } from "antd";
 
 const RoomItem = memo((props) => {
   const {
     roomInfo: {
       verify_info,
       picture_url,
+      picture_urls,
       name,
       price,
       star_rating,
@@ -26,7 +28,19 @@ const RoomItem = memo((props) => {
     >
       <ul className="item">
         <li className="item-img">
-          <img src={picture_url} alt=""></img>
+          {picture_urls ? (
+            <Carousel dots={false}>
+              {picture_urls?.map((item) => (
+                <div className="item-img__box">
+                  <img src={item} alt=""></img>
+                </div>
+              ))}
+            </Carousel>
+          ) : (
+            <div className="item-img__box">
+              <img src={picture_url} alt=""></img>
+            </div>
+          )}
         </li>
         <li className="item-desc">{verify_info?.messages?.join("•")}</li>
         <li className="item-name">{name}</li>

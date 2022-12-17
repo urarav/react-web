@@ -12,21 +12,24 @@ export const RoomItemWrapper = styled.li`
     height: 100%;
 
     &-img {
-      position: relative;
-      padding: 66.6% 0 0;
-      overflow: hidden;
-      border-radius: 4px;
+      &__box {
+        position: relative;
+        padding: 66.6% 0 0;
+        overflow: hidden;
+        border-radius: 4px;
 
-      > img {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        transition: all 0.5s;
+        img {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          transition: all 0.5s;
+          object-fit: cover;
 
-        &:hover {
-          transform: scale(1.1);
-          filter: brightness(1.1) contrast(1.1);
+          &:hover {
+            transform: scale(1.1);
+            filter: brightness(1.1) contrast(1.1);
+          }
         }
       }
     }
