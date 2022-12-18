@@ -12,11 +12,18 @@ export const RoomItemWrapper = styled.li`
     height: 100%;
 
     &-img {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+
+      &:hover .item-img__ctrl {
+        opacity: 1;
+        visibility: visible;
+      }
+
       &__box {
         position: relative;
         padding: 66.6% 0 0;
-        overflow: hidden;
-        border-radius: 4px;
 
         img {
           position: absolute;
@@ -29,6 +36,74 @@ export const RoomItemWrapper = styled.li`
           &:hover {
             transform: scale(1.1);
             filter: brightness(1.1) contrast(1.1);
+          }
+        }
+      }
+
+      &__ctrl {
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1;
+        display: flex;
+        position: absolute;
+        transition: all 1s ease;
+        justify-content: space-between;
+
+        .btn {
+          width: 83px;
+          color: #fff;
+          display: flex;
+          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+
+          &.left {
+            background: linear-gradient(
+              to left,
+              transparent,
+              rgba(0, 0, 0, 0.25)
+            );
+          }
+
+          &.right {
+            background: linear-gradient(
+              to right,
+              transparent,
+              rgba(0, 0, 0, 0.25)
+            );
+          }
+        }
+      }
+
+      &__slider {
+        position: absolute;
+        bottom: 10px;
+        width: 30%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 2;
+
+        .dot-box {
+          width: ${100 / 5}%;
+
+          .dot {
+            display: block;
+            margin: auto;
+            border-radius: 50%;
+            background-color: #ffffffcc;
+
+            &.is-active {
+              height: 8px;
+              width: 8px;
+              background-color: #fff;
+            }
+
+            &:not(.is-active) {
+              height: 6px;
+              width: 6px;
+            }
           }
         }
       }

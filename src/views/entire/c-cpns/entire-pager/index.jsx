@@ -1,8 +1,8 @@
 import React, { Fragment, memo } from "react";
 import { EntirePagerWrapper } from "./style";
 import { Pagination } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchEntireDataAction } from "@/store/entire/createActions";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { fetchEntireDataAction } from "@/store/modules/entire/createActions";
 
 const EntirePager = memo(() => {
   const { totalCount, currentPage, pageSize, roomList } = useSelector(
@@ -11,7 +11,8 @@ const EntirePager = memo(() => {
       currentPage: state.entire.currentPage,
       pageSize: state.entire.pageSize,
       roomList: state.entire.roomList,
-    })
+    }),
+    shallowEqual
   );
   const startCount = currentPage * pageSize + 1;
   const endCount = (currentPage + 1) * pageSize;

@@ -1,4 +1,4 @@
-import { fetchEntireDataAction } from "@/store/entire/createActions";
+import { fetchEntireDataAction } from "@/store/modules/entire/createActions";
 import React, { memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import EntireFilter from "./c-cpns/entire-filter";
