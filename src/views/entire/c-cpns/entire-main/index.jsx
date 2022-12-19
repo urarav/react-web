@@ -1,6 +1,6 @@
 import RoomItem from "@/components/room-item";
 import { changeRoomInfo } from "@/store/modules/detail";
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { EntireMainWrapper } from "./style";
@@ -16,15 +16,18 @@ const EntireMain = memo(() => {
   );
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  function handleClick(roomInfo) {
-    dispatch(changeRoomInfo(roomInfo));
-    navigate("/detail");
-  }
+  const handleClick = useCallback(
+    (roomInfo) => {
+      dispatch(changeRoomInfo(roomInfo));
+      navigate("/detail");
+    },
+    [dispatch, navigate]
+  );
   return (
     <EntireMainWrapper>
       <h3 className="title">{totalCount}家住宿</h3>
       <ul className="list">
-        {roomList.map((li) => (
+        {roomList?.map((li) => (
           <RoomItem
             handleClick={handleClick}
             key={li._id}

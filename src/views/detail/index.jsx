@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import PhotoBrowser from "@/base-ui/photo-browser";
+import React, { memo, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { DetailWrapper } from "./style";
 
@@ -9,14 +10,27 @@ const Detail = memo(() => {
     }),
     shallowEqual
   );
+
+  const [IsDisplayPhotoBrowser, setIsDisplayPhotoBrowser] = useState(false);
+
+  function handleClickItem() {
+    setIsDisplayPhotoBrowser(true);
+  }
+
+  function handleClose() {
+    setIsDisplayPhotoBrowser(false);
+  }
   return (
     <DetailWrapper>
-      {roomInfo.picture_urls?.slice(0, 5)?.map((li) => (
-        <li className="item" key={li}>
-          <div className="item-mask"></div>
-          <img className="item-img" src={li} alt=""></img>
-        </li>
-      ))}
+      <section className="grid">
+        {roomInfo.picture_urls?.slice(0, 5)?.map((li) => (
+          <li onClick={handleClickItem} className="item" key={li}>
+            <img className="item-img" src={li} alt=""></img>
+            <div className="item-mask"></div>
+          </li>
+        ))}
+      </section>
+      {IsDisplayPhotoBrowser && <PhotoBrowser onClose={handleClose} />}
     </DetailWrapper>
   );
 });

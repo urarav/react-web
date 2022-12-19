@@ -7,7 +7,6 @@ const detailSlice = createSlice({
   },
   reducers: {
     changeRoomInfo(state, { payload }) {
-      console.log(payload);
       state.roomInfo = payload;
     },
   },
