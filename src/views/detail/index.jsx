@@ -30,7 +30,9 @@ const Detail = memo(() => {
           </li>
         ))}
       </section>
-      {IsDisplayPhotoBrowser && <PhotoBrowser onClose={handleClose} />}
+      {IsDisplayPhotoBrowser && (
+        <PhotoBrowser onClose={handleClose} photoList={roomInfo.picture_urls} />
+      )}
     </DetailWrapper>
   );
 });
