@@ -5,7 +5,7 @@ import { RoomItemWrapper } from "./style";
 import { Carousel } from "antd";
 import IconLeftArrow from "@/assets/svg/IconLeftArrow";
 import IconRightArrow from "@/assets/svg/IconRightArrow";
-import Indicator from "@/base-ui/Indicator";
+import Indicator from "@/base-ui/indicator";
 import classNames from "classnames";
 
 const RoomItem = memo((props) => {
@@ -32,7 +32,8 @@ const RoomItem = memo((props) => {
   const length = picture_urls?.length;
 
   function handleBtnClick(isRight) {
-    return () => {
+    return (e) => {
+      e.stopPropagation()
       const { current: slider } = sliderRef;
       isRight ? slider.next() : slider.prev();
 

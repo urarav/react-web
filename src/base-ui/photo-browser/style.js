@@ -6,6 +6,7 @@ export const PhotoBrowserWrapper = styled.div`
   position: fixed;
   background-color: #222;
   flex-direction: column;
+  user-select: none;
 
   .close {
     cursor: pointer;
@@ -27,6 +28,53 @@ export const PhotoBrowserWrapper = styled.div`
 
     .preview-btn {
       cursor: pointer;
+    }
+  }
+
+  .gallery {
+    max-width: 105vh;
+    align-self: center;
+    margin-bottom: 20px;
+
+    &-desc {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+      color: #fff;
+
+      h4 {
+        font-weight: 400;
+      }
+
+      p {
+        cursor: pointer;
+
+        > svg {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    &-list {
+      transition: all 250ms ease;
+      overflow: hidden;
+
+      &__item {
+        & + .gallery-list__item {
+          margin-left: 12px;
+        }
+
+        img {
+          height: 67px;
+          opacity: 0.5;
+          transition: all 250ms ease;
+          cursor: pointer;
+        }
+
+        &.is-active > img {
+          opacity: 1;
+        }
+      }
     }
   }
 
