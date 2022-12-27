@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DetailWrapper = styled.ul`
+export const DetailWrapper = styled.div`
   .grid {
     display: grid;
     grid-template-rows: repeat(2, 300px);
