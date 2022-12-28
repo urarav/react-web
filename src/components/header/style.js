@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header`
+export const ContentWrapper = styled.header`
   width: 100%;
   z-index: 3;
   position: ${(props) => (props.isFixed ? "fixed" : "static")};
@@ -32,5 +32,14 @@ export const HeaderWrapper = styled.header`
         color: #717171;
       }
     }
+  }
+`;
+
+export const HeaderWrapper = styled.div`
+  .mask {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 `;

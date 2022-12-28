@@ -1,15 +1,36 @@
 import IconSearch from "@/assets/svg/IconSearch";
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { CenterWrapper } from "./style";
 import PropTypes from "prop-types";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { changeIsSearchAction } from "@/store/modules/main";
+import { useScroll } from "@/hooks/useScroll";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const HeaderCenter = memo((props) => {
-  const [isSearch, setIsSearch] = useState(false);
-  const { onSearch, onTabChange } = props;
+  const { isSearch } = useSelector(
+    (state) => ({
+      isSearch: state.main.isSearch,
+    }),
+    shallowEqual
+  );
+  const { onTabChange } = props,
+    dispatch = useDispatch(),
+    [, scrollY] = useScroll();
+
+  let oldScrollX = useRef(0);
   function handleSearch() {
-    setIsSearch(true);
-    onSearch(true);
+    dispatch(changeIsSearchAction(true));
   }
+
+  !isSearch && (oldScrollX.current = scrollY);
+
+  useEffect(() => {
+    if (isSearch && Math.abs(scrollY - oldScrollX.current) > 30)
+      dispatch(changeIsSearchAction(false));
+    if (scrollY === 0) dispatch(changeIsSearchAction(true));
+  }, [isSearch, scrollY, dispatch]);
 
   function handleClickItem(e) {
     const {
@@ -18,13 +39,16 @@ const HeaderCenter = memo((props) => {
         dataset: { idx },
       },
     } = e;
-    const children = parentEle.children;
-    for (const child of children) {
-      child.classList.toggle("is-active");
+    if (idx) {
+      const children = parentEle.children;
+      for (const child of children) {
+        child.classList.toggle("is-active");
+      }
+      onTabChange(idx);
     }
-    onTabChange(idx);
     // ele.classList.add("is-active");
   }
+
   return (
     <CenterWrapper>
       {!isSearch && (
@@ -50,7 +74,6 @@ const HeaderCenter = memo((props) => {
 });
 
 HeaderCenter.propTypes = {
-  onSearch: PropTypes.func,
   onTabChange: PropTypes.func,
 };
 
