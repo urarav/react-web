@@ -6,8 +6,10 @@ export const ContentWrapper = styled.header`
   position: ${(props) => (props.isFixed ? "fixed" : "static")};
   height: ${(props) => (props.isSearch ? "160" : "80")}px;
   transition: all ease 0.25s;
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
+  background-color: ${(props) =>
+    props.theme.isAlpha ? "transparent" : "#fff"};
+  border-bottom: 1px solid
+    ${(props) => (props.theme.isAlpha ? "transparent" : "#eee")};
   padding: 0 24px;
   display: grid;
   align-items: center;

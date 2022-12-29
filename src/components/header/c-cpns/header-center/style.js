@@ -13,6 +13,7 @@ export const CenterWrapper = styled.div`
     .text {
       font-weight: 600;
       padding-left: 24px;
+      color: ${(props) => (props.theme.isAlpha ? "#fff" : "unset")};
     }
 
     .icon-wrapper {
@@ -32,7 +33,7 @@ export const CenterWrapper = styled.div`
     ul {
       display: flex;
       font-size: 16px;
-      color: #222;
+      color: ${(props) => (props.theme.isAlpha ? "#fff" : "#222")};
 
       li {
         margin: 10px 16px;
@@ -47,7 +48,8 @@ export const CenterWrapper = styled.div`
           top: calc(100% + 8px);
           height: 2px;
           width: 100%;
-          background-color: #222;
+          background-color: ${(props) =>
+            props.theme.isAlpha ? "#fff" : "#222"};
           transform: scale(0);
           transition: all 0.5s ease;
         }

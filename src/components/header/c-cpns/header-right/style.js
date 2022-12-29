@@ -10,10 +10,19 @@ export const RightWrapper = styled.div`
       cursor: pointer;
       font-weight: 600;
       border-radius: 22px;
-      color: ${(props) => props.theme.textColor.primaryColor};
+      color: ${(props) => {
+        const {
+          theme: {
+            isAlpha,
+            textColor: { primaryColor },
+          },
+        } = props;
+        return isAlpha ? "#fff" : primaryColor;
+      }};
 
       &:hover {
-        background-color: #f7f7f7;
+        background-color: ${(props) =>
+          props.theme.isAlpha ? "rgba(0,0,0,.25)" : "#f7f7f7"};
       }
     }
 
@@ -27,12 +36,12 @@ export const RightWrapper = styled.div`
       align-items: center;
       border: 1px solid #ddd;
       padding: 5px 5px 5px 12px;
+      color: ${(props) => (props.theme.isAlpha ? "#fff" : "#717171")};
       ${(props) => props.theme.mixins.boxShadow}
 
       &__avatar {
         width: 30px;
         height: 30px;
-        color: #717171;
         position: relative;
 
         &::before {
@@ -52,6 +61,7 @@ export const RightWrapper = styled.div`
         position: absolute;
         right: 0;
         background-color: #fff;
+        color: #000;
         top: 130%;
         width: 240px;
         border-radius: 10px;
@@ -74,7 +84,7 @@ export const RightWrapper = styled.div`
         li {
           padding: 12px;
           transition: all 0.25s ease;
-          
+
           &:hover {
             background-color: #f5f5f5;
           }

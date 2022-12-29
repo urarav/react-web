@@ -1,37 +1,56 @@
-import React, { memo, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import React, { memo, useRef, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import { HeaderWrapper, ContentWrapper } from "./style";
+import { useScroll } from "@/hooks/useScroll";
 import HeaderCenter from "./c-cpns/header-center";
 import HeaderLeft from "./c-cpns/header-left";
 import HeaderRight from "./c-cpns/header-right";
-import { HeaderWrapper, ContentWrapper } from "./style";
 import headerData from "@/assets/mock/header.json";
-import { changeIsSearchAction } from "@/store/modules/main";
 import HeaderInfo from "./c-cpns/header-info";
+import { ThemeProvider } from "styled-components";
 
 const AppHeader = memo(() => {
-  const { isFixed, isSearch } = useSelector(
+  const { isFixed, isTopAlpha } = useSelector(
     (state) => ({
       isFixed: state.main.isFixed,
-      isSearch: state.main.isSearch,
+      isTopAlpha: state.main.isTopAlpha,
     }),
     shallowEqual
   );
-  const dispatch = useDispatch();
+  const [isSearch, setIsSearch] = useState(true);
+
+  const [, scrollY] = useScroll();
+  let oldScrollY = useRef(0);
+  if (!isSearch) {
+    oldScrollY.current = scrollY;
+  }
+  if (isSearch && Math.abs(scrollY - oldScrollY.current) > 30) {
+    setIsSearch(false);
+  }
+
+  const isAlpha = scrollY === 0 && isTopAlpha;
+
   function handleClickMask() {
-    dispatch(changeIsSearchAction(false));
+    setIsSearch(false);
   }
 
   const [tabIdx, setTabIdx] = useState("tab1");
   return (
-    <HeaderWrapper>
-      <ContentWrapper isSearch={isSearch} isFixed={isFixed}>
-        <HeaderLeft />
-        <HeaderCenter onTabChange={setTabIdx} />
-        <HeaderRight />
-        {isSearch && <HeaderInfo tabInfo={headerData[tabIdx]} />}
-      </ContentWrapper>
-      {isSearch && <div className="mask" onClick={handleClickMask}></div>}
-    </HeaderWrapper>
+    <ThemeProvider theme={{ isAlpha }}>
+      <HeaderWrapper>
+        <ContentWrapper isSearch={isAlpha || isSearch} isFixed={isFixed}>
+          <HeaderLeft />
+          <HeaderCenter
+            isSearch={isAlpha || isSearch}
+            onSearch={setIsSearch}
+            onTabChange={setTabIdx}
+          />
+          <HeaderRight />
+          {(isAlpha || isSearch) && <HeaderInfo tabInfo={headerData[tabIdx]} />}
+        </ContentWrapper>
+        {isSearch && <div className="mask" onClick={handleClickMask}></div>}
+      </HeaderWrapper>
+    </ThemeProvider>
   );
 });
 

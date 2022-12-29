@@ -6,13 +6,17 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 import { HomeWrapper } from "./style";
 import { isEmpty } from "@/utils";
 import HomeGallery from "./c-cpns/home-gallery";
-import { changeIsFixedAction } from "@/store/modules/main";
+import {
+  changeIsFixedAction,
+  changeIsTopAlphaAction,
+} from "@/store/modules/main";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchHomeDataAction());
     dispatch(changeIsFixedAction(true));
+    dispatch(changeIsTopAlphaAction(true));
   }, [dispatch]);
 
   const {

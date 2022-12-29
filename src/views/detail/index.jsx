@@ -1,5 +1,8 @@
 import PhotoBrowser from "@/base-ui/photo-browser";
-import { changeIsFixedAction } from "@/store/modules/main";
+import {
+  changeIsFixedAction,
+  changeIsTopAlphaAction,
+} from "@/store/modules/main";
 import React, { memo, useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { DetailWrapper } from "./style";
@@ -16,6 +19,7 @@ const Detail = memo(() => {
   const [IsDisplayPhotoBrowser, setIsDisplayPhotoBrowser] = useState(false);
   useEffect(() => {
     dispatch(changeIsFixedAction(false));
+    dispatch(changeIsTopAlphaAction(false));
   }, [dispatch]);
 
   function handleClickItem() {

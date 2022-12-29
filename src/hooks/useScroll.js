@@ -10,7 +10,7 @@ export function useScroll() {
       setScrollX(window.scrollX);
       setScrollY(window.scrollY);
     }
-    const throttleFunc = throttle(handleScroll, 250);
+    const throttleFunc = throttle(handleScroll, 150);
     window.addEventListener("scroll", throttleFunc);
     return () => window.removeEventListener("scroll", throttleFunc);
   }, []);
