@@ -40,6 +40,7 @@ export const CenterWrapper = styled.div`
         position: relative;
         cursor: pointer;
         transition: all 0.5s ease;
+        white-space: nowrap;
 
         &::after {
           content: "";

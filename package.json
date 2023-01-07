@@ -23,8 +23,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "cross-env NODE_ENV=development craco start",
+    "build": "cross-env NODE_ENV=production craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
@@ -50,6 +50,8 @@
     "@craco/craco": "^7.0.0-alpha.9",
     "classnames": "^2.3.2",
     "craco-less": "^2.1.0-alpha.0",
-    "styled-components": "^5.3.6"
+    "cross-env": "^7.0.3",
+    "styled-components": "^5.3.6",
+    "webpack-bundle-analyzer": "^4.7.0"
   }
 }

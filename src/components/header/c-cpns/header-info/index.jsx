@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
+import { HeaderInfoWrapper } from "./style";
 
 const HeaderInfo = memo((props) => {
   const { tabInfo } = props;
   return (
-    <ul className="search">
+    <HeaderInfoWrapper className="search">
       {tabInfo.map((item, idx) => {
         const { h, p } = item;
         return (
@@ -14,7 +15,7 @@ const HeaderInfo = memo((props) => {
           </li>
         );
       })}
-    </ul>
+    </HeaderInfoWrapper>
   );
 });
 

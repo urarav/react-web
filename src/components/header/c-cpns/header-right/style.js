@@ -10,6 +10,7 @@ export const RightWrapper = styled.div`
       cursor: pointer;
       font-weight: 600;
       border-radius: 22px;
+      white-space: nowrap;
       color: ${(props) => {
         const {
           theme: {

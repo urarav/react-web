@@ -1,10 +1,10 @@
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 
-const Home = lazy(() => import("@/views/home"));
-const Detail = lazy(() => import("@/views/detail"));
-const Entire = lazy(() => import("@/views/entire"));
-const Test = lazy(() => import("@/views/test"));
+const Home = lazy(() => import(/* webpackChunkName: "home" */ "@/views/home"));
+const Detail = lazy(() => import(/* webpackChunkName: "detail" */ "@/views/detail"));
+const Entire = lazy(() => import(/* webpackChunkName: "entire" */ "@/views/entire"));
+const Test = lazy(() => import(/* webpackChunkName: "test" */ "@/views/test"));
 
 const routes = [
   {

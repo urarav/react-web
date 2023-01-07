@@ -22,7 +22,7 @@ export const ContentWrapper = styled.header`
     grid-column: 1 / span 3;
     justify-self: center;
     height: 66px;
-    width: 860px;
+    width: 56.6vw;
     background-color: #f7f7f7;
     &-item {
       flex: 1;

@@ -17,7 +17,7 @@ const AppHeader = memo(() => {
     }),
     shallowEqual
   );
-  const [isSearch, setIsSearch] = useState(true);
+  const [isSearch, setIsSearch] = useState(false);
 
   const [, scrollY] = useScroll();
   let oldScrollY = useRef(0);

@@ -4,7 +4,7 @@ export const FooterWrapper = styled.footer`
   border-top: 1px solid #ebebeb;
 
   .content {
-    width: 1032px;
+    width: 68vw;
     margin: auto;
     padding: 48px 0;
 

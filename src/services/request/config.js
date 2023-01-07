@@ -1,4 +1,3 @@
-const BASE_URL = "http://codercba.com:1888/airbnb/api";
+const BASE_URL = process.env.NODE_ENV === "development" ? "/dev" : "/prod";
 const TIMEOUT = 5000;
-
 export { BASE_URL, TIMEOUT };
