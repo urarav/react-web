@@ -2,6 +2,7 @@ import React, { memo, useState } from "react";
 import { EntireFilterWrapper } from "./style";
 import classNames from "classnames";
 import filterData from "@/assets/mock/filter.json";
+import ScrollView from "@/base-ui/scroll-view";
 
 const EntireFilter = memo(() => {
   const [activeItems, setActiveItems] = useState([]);
@@ -17,17 +18,19 @@ const EntireFilter = memo(() => {
   }
   return (
     <EntireFilterWrapper>
-      {filterData.map((li, idx) => (
-        <li
-          key={idx}
-          onClick={(e) => handleClickItem(li)}
-          className={classNames("item", {
-            "is-active": activeItems.includes(li),
-          })}
-        >
-          <span>{li}</span>
-        </li>
-      ))}
+      <ScrollView>
+        {filterData.map((li, idx) => (
+          <li
+            key={idx}
+            onClick={(e) => handleClickItem(li)}
+            className={classNames("item", {
+              "is-active": activeItems.includes(li),
+            })}
+          >
+            <span>{li}</span>
+          </li>
+        ))}
+      </ScrollView>
     </EntireFilterWrapper>
   );
 });

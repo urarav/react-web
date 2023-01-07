@@ -7,6 +7,10 @@ export const LongingItemWrapper = styled.li`
   position: relative;
   width: calc((100% - 16 * 4px) / 5);
 
+  @media screen and (max-width: 768px) {
+    width: calc((100% - 16px) / 2);
+  }
+
   .img {
     width: 100%;
   }

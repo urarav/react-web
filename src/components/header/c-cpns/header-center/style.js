@@ -1,14 +1,18 @@
 import styled from "styled-components";
 export const CenterWrapper = styled.div`
   .is-collapse {
-    width: 300px;
     display: flex;
     cursor: pointer;
     align-items: center;
     border-radius: 40px;
     border: 1px solid #ddd;
     justify-content: space-between;
+    transition: width ease 0.25s;
     ${(props) => props.theme.mixins.boxShadow}
+
+    @media screen and (min-width: 768px) {
+      width: 300px;
+    }
 
     .text {
       font-weight: 600;

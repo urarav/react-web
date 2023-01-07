@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContentWrapper = styled.header`
   width: 100%;
   z-index: 3;
-  position: ${(props) => (props.isFixed ? "fixed" : "static")};
+  position: ${(props) => (props.isFixed ? "fixed" : "relative")};
   height: ${(props) => (props.isSearch ? "160" : "80")}px;
   transition: all ease 0.25s;
   background-color: ${(props) =>
@@ -13,7 +13,12 @@ export const ContentWrapper = styled.header`
   padding: 0 24px;
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr max-content 1fr;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: max-content 1fr max-content;
+    column-gap: 10px;
+  }
 
   .search {
     display: flex;
@@ -24,6 +29,7 @@ export const ContentWrapper = styled.header`
     height: 66px;
     width: 56.6vw;
     background-color: #f7f7f7;
+
     &-item {
       flex: 1;
       padding: 0 32px;
@@ -32,6 +38,13 @@ export const ContentWrapper = styled.header`
       }
       p {
         color: #717171;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      height: 44px;
+      &-item {
+        padding: 0 16px;
       }
     }
   }

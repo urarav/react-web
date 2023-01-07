@@ -8,6 +8,14 @@ export const RoomItemWrapper = styled.li`
   padding: ${(props) => (props.isGallery ? 0 : 8)}px;
   flex-shrink: 0;
 
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 50%;
+  }
+
   .item {
     height: 100%;
 

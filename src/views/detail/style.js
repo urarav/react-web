@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DetailWrapper = styled.div`
   .grid {
     display: grid;
+    transition: all ease 0.25s;
     grid-template-rows: repeat(2, 300px);
     grid-template-columns: 2fr repeat(2, 1fr);
     &:hover {
@@ -46,5 +47,9 @@ export const DetailWrapper = styled.div`
     }
   }
 
-
+  @media screen and (max-width: 768px) {
+    .grid {
+      grid-template-rows: repeat(2, 150px);
+    }
+  }
 `;

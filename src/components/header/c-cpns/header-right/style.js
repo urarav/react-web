@@ -92,5 +92,11 @@ export const RightWrapper = styled.div`
         }
       }
     }
+
+    @media screen and (max-width: 768px) {
+      &-btn {
+        display: none;
+      }
+    }
   }
 `;

@@ -1,6 +1,6 @@
 import IconWeChat from "@/assets/svg/IconWeChat";
 import IconWeiBo from "@/assets/svg/IconWeiBo";
-import IncoAirbnb from "@/assets/svg/IncoAirbnb";
+import IconAirbnb from "@/assets/svg/IconAirbnb";
 import React, { memo } from "react";
 import { FooterWrapper } from "./style";
 
@@ -51,7 +51,7 @@ const AppFooter = memo(() => {
 
         <section className="content-bottom">
           <article className="content-bottom__left">
-            <IncoAirbnb />
+            <IconAirbnb />
             <div>
               <p>
                 京ICP备16017121号 京ICP证 160773号&nbsp;

@@ -13,4 +13,22 @@ export const LeftWrapper = styled.div`
   svg {
     cursor: pointer;
   }
+
+  @media screen and (max-width: 768px) {
+    .no-text {
+      display: unset;
+    }
+    .has-text {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .no-text {
+      display: none;
+    }
+    .has-text {
+      display: unset;
+    }
+  }
 `;

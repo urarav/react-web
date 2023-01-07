@@ -52,4 +52,10 @@ export const FooterWrapper = styled.footer`
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .content-top {
+      display: none;
+    }
+  }
 `;

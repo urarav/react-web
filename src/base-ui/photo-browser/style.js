@@ -4,6 +4,7 @@ export const PhotoBrowserWrapper = styled.div`
   inset: 0;
   display: flex;
   position: fixed;
+  z-index: 4;
   background-color: #222;
   flex-direction: column;
   user-select: none;
@@ -23,7 +24,8 @@ export const PhotoBrowserWrapper = styled.div`
     justify-content: space-between;
 
     .preview-img {
-      height: 100%;
+      max-height: 100%;
+      max-width: 50vw;
     }
 
     .preview-btn {
@@ -32,7 +34,7 @@ export const PhotoBrowserWrapper = styled.div`
   }
 
   .gallery {
-    max-width: 105vh;
+    max-width: 50vw;
     align-self: center;
     margin-bottom: 20px;
 
@@ -96,5 +98,16 @@ export const PhotoBrowserWrapper = styled.div`
   .pic-exit-active {
     opacity: 0;
     transition: all 0.25s ease-in-out;
+  }
+
+  @media screen and (max-width: 768px) {
+    .preview-btn svg {
+      width: 45px !important;
+      height: 45px !important;
+    }
+
+    .gallery {
+      max-width: 90vw;
+    }
   }
 `;

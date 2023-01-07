@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ScrollViewWrapper = styled.div`
   position: relative;
+  width: 100%;
 
   .btn {
     width: 28px;

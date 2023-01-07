@@ -16,7 +16,10 @@ module.exports = {
     compress: true,
     host: "localhost",
     port: 8888,
-    // open: true,
+    open: false,
+    client: {
+      overlay: true,
+    },
     proxy: {
       "/dev": {
         target: "http://codercba.com:1888/airbnb/api",
