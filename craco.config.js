@@ -1,4 +1,5 @@
 const CracoLessPlugin = require("craco-less");
+const webpack = require("webpack");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
@@ -15,7 +16,7 @@ module.exports = {
     compress: true,
     host: "localhost",
     port: 8888,
-    open: true,
+    // open: true,
     proxy: {
       "/dev": {
         target: "http://codercba.com:1888/airbnb/api",
@@ -30,6 +31,11 @@ module.exports = {
       // "@mui/styled-engine": "@mui/styled-engine-sc",
       components: resolve("src/components"),
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.SOON_SEVEN": JSON.stringify(process.env.SOON_SEVEN),
+      }),
+    ],
     configure: (webpackConfig, { env, paths }) => {
       if (env === "development") {
         webpackConfig.plugins.push(
@@ -37,7 +43,7 @@ module.exports = {
             analyzerMode: "server",
             analyzerHost: "127.0.0.1",
             analyzerPort: 7777,
-            openAnalyzer: true, // 构建完打开浏览器
+            openAnalyzer: false, // 构建完打开浏览器
             reportFilename: path.resolve(__dirname, `analyzer/index.html`),
           })
         );
