@@ -6,7 +6,7 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import { PhotoBrowserWrapper } from "./style";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import IconArrowBottom from "@/assets/svg/IconArrowBottom";
-import Indicator from "../indicate";
+import Indicator from "../indicator";
 import classNames from "classnames";
 import IconArrowTop from "@/assets/svg/IconArrowTop";
 
