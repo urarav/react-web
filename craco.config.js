@@ -34,11 +34,13 @@ module.exports = {
       // "@mui/styled-engine": "@mui/styled-engine-sc",
       components: resolve("src/components"),
     },
-    plugins: [
-      new webpack.DefinePlugin({
-        "process.env.SOON_SEVEN": JSON.stringify(process.env.SOON_SEVEN),
-      }),
-    ],
+    plugins: {
+      add: [
+        new webpack.DefinePlugin({
+          "process.env.SOON_SEVEN": JSON.stringify(process.env.SOON_SEVEN),
+        }),
+      ],
+    },
     configure: (webpackConfig, { env, paths }) => {
       if (env === "development") {
         webpackConfig.plugins.push(
@@ -53,6 +55,8 @@ module.exports = {
       }
       webpackConfig.externals = {
         ...webpackConfig.externals,
+        react: "React",
+        "react-dom": "ReactDOM",
       };
       webpackConfig.output = {
         ...webpackConfig.output,
