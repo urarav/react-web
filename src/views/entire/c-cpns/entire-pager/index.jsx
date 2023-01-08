@@ -31,7 +31,7 @@ const EntirePager = memo(() => {
     <EntirePagerWrapper>
       {!!roomList.length && (
         <Fragment>
-          <Pagination onChange={handlePageChange} count={pageCount} />
+          <Pagination siblingCount={0} onChange={handlePageChange} count={pageCount} />
           <p>
             第 {startCount} – {endCount} 个房源，共 {totalCount} 个
           </p>
