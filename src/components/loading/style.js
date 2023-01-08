@@ -20,10 +20,9 @@ export const LoadingWrapper = styled.div`
     }
 
     @keyframes animate {
-      from,
-      to {
+      from {
         height: 10px;
-        background: #ffd166;
+        background: transparent;
       }
       25% {
         height: 90px;
@@ -36,6 +35,10 @@ export const LoadingWrapper = styled.div`
       75% {
         height: 90px;
         background: #ef476f;
+      }
+      to {
+        height: 10px;
+        background: #ffd166;
       }
     }
   }
