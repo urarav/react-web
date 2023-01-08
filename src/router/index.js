@@ -2,9 +2,12 @@ import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 
 const Home = lazy(() => import(/* webpackChunkName: "home" */ "@/views/home"));
-const Detail = lazy(() => import(/* webpackChunkName: "detail" */ "@/views/detail"));
-const Entire = lazy(() => import(/* webpackChunkName: "entire" */ "@/views/entire"));
-const Test = lazy(() => import(/* webpackChunkName: "test" */ "@/views/test"));
+const Detail = lazy(() =>
+  import(/* webpackChunkName: "detail" */ "@/views/detail")
+);
+const Entire = lazy(() =>
+  import(/* webpackChunkName: "entire" */ "@/views/entire")
+);
 
 const routes = [
   {
@@ -22,10 +25,6 @@ const routes = [
   {
     path: "/entire",
     element: <Entire />,
-  },
-  {
-    path: "/test",
-    element: <Test />,
   },
 ];
 
