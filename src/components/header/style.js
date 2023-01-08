@@ -17,7 +17,7 @@ export const ContentWrapper = styled.header`
 
   @media screen and (max-width: 768px) {
     grid-template-columns: max-content 1fr max-content;
-    column-gap: 10px;
+    column-gap: 8px;
   }
 
   .search {
