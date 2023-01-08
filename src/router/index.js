@@ -9,6 +9,8 @@ const Entire = lazy(() =>
   import(/* webpackChunkName: "entire" */ "@/views/entire")
 );
 
+const Test = lazy(() => import(/* webpackChunkName: "test" */ "@/views/test"));
+
 const routes = [
   {
     path: "/",
@@ -25,6 +27,10 @@ const routes = [
   {
     path: "/entire",
     element: <Entire />,
+  },
+  {
+    path: "/test",
+    element: <Test />,
   },
 ];
 
